@@ -96,22 +96,85 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+    html {   
+        background-color: #ffffff;
+        font-family: ubuntu,trebuchet ms,lucida grande,lucida sans unicode,lucida sans,Tahoma,sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    #page {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    #leftcol {
+        float: left;
+        width: 25%;
+        padding-left: 0.5em;
+    }
+
+    #rightcol {
+        padding-top: 1em;
+        padding-left: 2em;
+        float: left;
+        width: 60%;
+    }
+
+    .nav-top {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .nav-top li {
+        float: right;
+        text-align: left;
+        font-size: 0.7em; 
+    }
+
+    .nav-top ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+      
+
+    h1 {
+        font-family: chunkfiveregular,arial black,sans-serif;
+        font-weight: 400;
+    }
+
+    p { 
+        color: #111; 
+        font-size: 1em; 
+        line-height: 1.6em;
+    }
 
 
+    a { 
+        color: #517410; 
+        text-decoration: none; 
+    }
 
 
+    a:hover { 
+        text-decoration: underline 
+    }
 
+    hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #F7F1F1;
+        border-bottom: 1px solid #fff;
+    }
 
-
-
-
-
-
-
-
-
-
-
+    .avatar { 
+        border-radius: 50%; 
+        margin-top: 3em;
+        margin-left: 1em;
+    }
 
 /* ==========================================================================
    Helper classes

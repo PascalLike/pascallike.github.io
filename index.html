@@ -2,59 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Page Not Found</title>
+    <title>About Antonio Cerciello</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+    <meta name="author" content="Antonio Cerciello" />
+    <meta name="description" content="About me" />
+    <meta name="keywords" content="About, Profile" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="About me - Antonio Cerciello" />
+    <meta property="og:url" content="https://pascallike.github.io" />
+    <meta property="og:description" content="Something about Antonio Cerciello" />
+    <meta property="og:site_name" content="About me - Antonio Cerciello" />
+    <meta property="og:image" content="https://pascallike.github.io/img/antospixel320px.png" />
+    <meta property="og:image:width" content="320" />
+    <meta property="og:image:height" content="320" />
+    <meta property="og:image:alt" content="Antonio Cerciello" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:text:title" content="About me" />
+    <meta name="twitter:title" content="Antonio Cerciello" />
+    <meta name="twitter:site" content="pascallike.github.io" />
+    <meta name="twitter:image" content="https://pascallike.github.io/img/antospixel320px.png" />
+    <meta name="twitter:image:alt" content="Antonio Cerciello" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@PascalLike">
 
-        * {
-            line-height: 1.2;
-            margin: 0;
-        }
-
-        html {
-            color: #888;
-            display: table;
-            font-family: sans-serif;
-            height: 100%;
-            text-align: center;
-            width: 100%;
-        }
-
-        body {
-            display: table-cell;
-            vertical-align: middle;
-            margin: 2em auto;
-        }
-
-        h1 {
-            color: #555;
-            font-size: 2em;
-            font-weight: 400;
-        }
-
-        p {
-            margin: 0 auto;
-            width: 280px;
-        }
-
-        @media only screen and (max-width: 280px) {
-
-            body, p {
-                width: 95%;
-            }
-
-            h1 {
-                font-size: 1.5em;
-                margin: 0 0 0.3em;
-            }
-
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/main.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/stackicons-social-minimal.min.css" media="screen"/>
+    
+    
 </head>
 <body>
-    <h1>Page Not Found</h1>
-    <p>Sorry, but the page you were trying to view does not exist.</p>
+    <div id="page">
+        <div id="leftcol">
+            <img src="img/antospixel80px.png" alt="Pixel art avatar" width="80" height="80" class="avatar"/>
+            <h2>Antonio Cerciello</h2>
+            <p>Software Engineer - <abbr title="My pronouns are He/Him">He/Him</abbr></p>
+            <nav class="nav-top"><ul><li><a href="https://twitter.com/PascalLike" target="_blank"><i class="st-icon-twitter">Twitter</i></a></li><li><a href="https://www.linkedin.com/in/antoniocerciello" target="_blank"><i class="st-icon-linkedin">Linkedin</i></a></li><li><a href="https://github.com/PascalLike" target="_blank"><i class="st-icon-github">GitHub</i></a></li><li><a href="mailto:antoniocerciell.o@gmail.com" target="_blank"><i class="st-icon-email">email</i></a></li></ul></nav>
+        </div>
+        <div id="rightcol">
+        <h1>About me</h1>
+        <hr>  
+        <p itemscope itemtype="http://schema.org/Person"> Hi! My name is <span itemprop="givenName">Antonio</span> <span itemprop="familyName">Cerciello</span> and I'm a <span itemprop="jobTitle">software engineer</span> based in <span itemscope itemtype="http://schema.org/address"><span itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality">Rome</span> (<span itemprop="addressCountry">Italy</span>)</span></span>.<br>
+            I'm specialized in development on web architectures. I'm passionate about open source, data visualization and knowledge sharing. I love technologies that break down barriers.<br>
+            In my career I explored different domains like e-government, <abbr title="Financial technology">fintech</abbr>, <abbr title="geographic information system">GIS</abbr>, e-learning.<br>
+            I'm a charter member of OSGeo (<a href="https://www.osgeo.org/member/cerciello/" rel="external">link to my OSGeo profile</a>).<br>
+            If you want to chat <a itemprop="email" href="mailto:antoniocerciell.o@gmail.com">please send me an email</a>!<br>        
+        </p>
+        <hr>
+        </div>
+    </div>
 </body>
 </html>
-<!-- IE needs 512+ bytes: https://blogs.msdn.microsoft.com/ieinternals/2010/08/18/friendly-http-error-pages/ -->
+
