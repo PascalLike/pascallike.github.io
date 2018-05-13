@@ -1,4 +1,8 @@
 {
+    "name": "pascallike",
+    "short_name": "pascallike",
+    "display": "standalone",
+    "description": "personal page of antonio cerciello.",
     "icons": [{
         "src": "icon.png",
         "sizes": "192x192",

@@ -12,6 +12,8 @@
 
 html {
     color: #222;
+    background-color: #999;
+    background-image: url(../img/sayagata.png);
     font-size: 1em;
     line-height: 1.4;
 }
@@ -93,15 +95,96 @@ textarea {
     padding: 0.2em 0;
 }
 
+
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+header {
+    top: 0px;
+    background-color: black;
+    background-image: url(../img/tweed.png);
+}
 
+footer {
+    color: gold;
+    background-color: black;
+    background-image: url(../img/tweed.png);
+}
 
+section {
+    padding: 10px;
+}
 
+article {
+    padding: 10px;
+    background-color: white;
+    border-color: #ccc;
+    border-width: 1px;
+    border-style: solid;
+}
 
+article + article { margin-top: 10px; }
 
+h1 {
+    padding-left: 10px;
+}
 
+header h1 {
+    color: white;
+    padding-top: 20px;
+}
+
+h2 {
+    color: #333;
+    background-color: gold;
+    padding-left: 10px;
+}
+
+h3 {
+    color: gold;
+    background-color: #333;
+    padding-left: 10px;
+}
+
+article h3 {
+    color: white;
+    background-color: #333;
+}
+
+p {
+    padding-left: 10px;
+}
+
+article p {
+    color: #333;
+    background-color: white;
+}
+
+nav {
+    color: black;
+    background-color: gold;
+    border-bottom-color: #999;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-left: 10px;
+}
+
+nav a {
+    color: black;
+}
+
+.contacts {
+    padding-left: 10px;
+}
+
+.fa {
+    padding: 10px;
+    font-size: 40px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    color: gold;
+}
 
 
 
