@@ -100,6 +100,7 @@ textarea {
         background-color: #ffffff;
         font-family: ubuntu,trebuchet ms,lucida grande,lucida sans unicode,lucida sans,Tahoma,sans-serif;
         -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
     }
 
     #page {
