@@ -83,7 +83,7 @@ let grid = [];
 let tolerance = 100;
 
 function setup() {
-    let canvas = createCanvas(windowWidth, windowHeight);
+    let canvas = createCanvas(windowWidth + 50, windowHeight + 1000);
     canvas.parent('mare');
     canvas.position(0, 0);
     canvas.style('z-index', '1');
@@ -96,6 +96,10 @@ function setup() {
 
     // Set the frequency
     frameRate(100); // 100 per second
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth + 50, windowHeight + 1000);
 }
 
 

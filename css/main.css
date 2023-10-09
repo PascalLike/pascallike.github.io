@@ -16,6 +16,15 @@ html {
     line-height: 1.4;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: block; /* Ensures the canvas stretches across the whole screen */
+    width: 100%;
+    height: 100%;
+}
+
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
@@ -128,6 +137,8 @@ textarea {
         height: 100%;
         z-index: 2; 
         position: relative;
+        min-width: 1024px;
+        min-height: 800px;
     }
 
     #page {
@@ -320,8 +331,57 @@ textarea {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
+@media only screen and (max-width: 768px) {
+    html {
+        font-size: 18px; /* Increase base font size for mobile for readability */
+    }
+
+    body {
+        overflow: auto; /* Allow scrolling on mobile */
+    }
+
+    #mare {
+        padding: 3%;
+        min-width: auto; /* Remove minimum width for better mobile experience */
+        min-height: auto;
+    }
+
+    #page {
+        width: 95%; /* Increase width for mobile */
+        height: auto; /* Let height adjust naturally on mobile */
+        padding: 1%;
+    }
+
+    #leftcol, #rightcol {
+        float: none; /* Stack columns on mobile */
+        width: 100%; /* Use full width for both columns */
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #rightcol {
+        padding-top: 1em;
+    }
+
+    .nav-top li {
+        float: none; /* Stack navigation items */
+        text-align: center;
+        font-size: 1em; /* Increase font size for navigation items */
+        margin-bottom: 0.5em; /* Space between navigation items */
+    }
+
+    p {
+        font-size: 1em; /* Adjust paragraph font size for mobile */
+    }
+
+    .avatar {
+        margin-top: 2em;
+        margin-left: 0;
+        max-width: 240px;
+        max-height: 240px;
+        width: 90%;
+        height: 90%;
+    }
 }
 
 @media print,
