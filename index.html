@@ -1,5 +1,12 @@
 <!doctype html>
 <html lang="en">
+<!-- 
+Thank you for inspecting the code on this page! 
+If you are interested in the font I use, I recommend starting from this link https://opendyslexic.org/.
+If you are curious about the background animation, it's the javascript code at the bottom of the page. 
+I did it with the amazing p5.js library 
+Bye!
+-->
 <head>
     <meta charset="utf-8">
     <title>About Antonio Cerciello</title>
@@ -30,17 +37,20 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="css/normalize.css" media="screen"/>
     <link rel="stylesheet" type="text/css" href="css/stackicons-social-minimal.min.css" media="screen"/>
-    
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
 </head>
 <body>
+<div id="mare">
     <div id="page">
         <div id="leftcol">
             <img src="img/antospixel240px.png" alt="Pixel art avatar" width="240" height="240" class="avatar"/>
-            <h2>Antonio Cerciello</h2>
-            <p>Software Engineer - <abbr title="My pronouns are He/Him">He/Him</abbr></p>
+            <span class="personal-info">
+                <h2  class="aberration" data-text="Antonio Cerciello"></h2>
+                <p>Software Engineer - <abbr title="My pronouns are He/Him">He/Him</abbr></p>
+            </span>
             <nav class="nav-top"><ul>
-                <li><a href="https://twitter.com/PascalLike" target="_blank"><i class="st-icon-twitter">Twitter</i></a></li>
+                <li><a href="https://hachyderm.io/@pascallike" target="_blank"><i class="st-icon-codepen">Mastodon</i></a></li>
                 <li><a href="https://www.linkedin.com/in/antoniocerciello" target="_blank"><i class="st-icon-linkedin">Linkedin</i></a></li>
                 <li><a href="https://github.com/PascalLike" target="_blank"><i class="st-icon-github">GitHub</i></a></li>
                 <li><a href="https://www.osgeo.org/member/cerciello/" target="_blank"><i class="st-icon-search">OSGeo profile</i></a></li>
@@ -48,9 +58,9 @@
             </ul></nav>
         </div>
         <div id="rightcol">
-        <h1>About me</h1>
+        <h1 class="aberration" data-text="About me"></h1>
         <hr>  
-        <p itemscope itemtype="http://schema.org/Person"  class="h-card"> Hi! My name is <span itemprop="givenName" class="p-given-name">Antonio</span> <span itemprop="familyName" class="p-family-name">Cerciello</span> (alias <span class="p-nickname">PascalLike</span>) and I'm a <span itemprop="jobTitle" class="p-job-title">software engineer</span> based in <span itemscope itemtype="http://schema.org/address"><span itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality" class="p-locality">Rome</span> (<span itemprop="addressCountry" class="p-region">Italy</span>)</span></span>.<br>
+        <p itemscope itemtype="http://schema.org/Person"  class="h-card"> Hi! My name is <span itemprop="givenName" class="p-given-name">Antonio</span> <span itemprop="familyName" class="p-family-name">Cerciello</span> (alias <span class="p-nickname">Pascal Like</span>) and I'm a <span itemprop="jobTitle" class="p-job-title">software engineer</span> based in <span itemscope itemtype="http://schema.org/address"><span itemscope itemtype="http://schema.org/PostalAddress"><span itemprop="addressLocality" class="p-locality">Rome</span> (<span itemprop="addressCountry" class="p-region">Italy</span>)</span></span>.<br>
             I'm specialized in development on web architectures. I'm passionate about open source, data visualization and knowledge sharing. I love technologies that break down barriers.<br>
             In my career I explored different domains like e-government, <abbr title="Financial technology">fintech</abbr>, <abbr title="geographic information system">GIS</abbr>, e-learning.<br>
             If you want to chat <a itemprop="email" href="mailto:antoniocerciell.o@gmail.com">please send me an email</a>!<br>  
@@ -59,9 +69,135 @@
             <img style="display:none" class="u-photo" src="https://pascallike.github.io/img/antospixel320px.png"/>
         </p>
         <hr>
-        </div>
     </div>
-    
+    </div>
+</div>
 </body>
+<script>
+
+let cols, rows;
+let side;
+let grid = [];
+// This is the tolerance
+// We should all learn to be more tolerant!
+let tolerance = 100;
+
+function setup() {
+    let canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent('mare');
+    canvas.position(0, 0);
+    canvas.style('z-index', '1');
+    noStroke();
+    side = width / 50;
+    cols = floor(width / side);
+    rows = floor(height / side);
+
+    initializeGrid();
+
+    // Set the frequency
+    frameRate(100); // 100 per second
+}
+
+
+function initializeGrid() {
+  for (let y = 0; y < rows; y++) {
+    grid[y] = [];
+    for (let x = 0; x < cols; x++) {
+      grid[y][x] = {
+        color: color(random(255), random(255), random(255)),
+        merged: false,
+      };
+    }
+  }
+}
+
+function draw() {
+  background(220);
+
+  let x = floor(random(cols));
+  let y = floor(random(rows));
+
+  if (!grid[y][x].merged) {
+    let allBlack = true;
+    let neighbors = [];
+
+    // Check for neighbors and see if they're all black
+    for (let i = -1; i <= 1; i++) {
+      for (let j = -1; j <= 1; j++) {
+        let xi = x + i;
+        let yj = y + j;
+
+        if (xi >= 0 && xi < cols && yj >= 0 && yj < rows && (i !== 0 || j !== 0)) {
+          neighbors.push({x: xi, y: yj});
+          if (grid[yj][xi].color.levels[0] !== 0 || grid[yj][xi].color.levels[1] !== 0 || grid[yj][xi].color.levels[2] !== 0) {
+            allBlack = false;
+          }
+        }
+      }
+    }
+
+    // If all neighbors are black, reset them
+    if (allBlack) {
+      for (let n of neighbors) {
+        grid[n.y][n.x].color = color(random(255), random(255), random(255));
+      }
+    } else {
+      let bestDist = Infinity;
+      let bestCoord = null;
+      for (let n of neighbors) {
+        if (!grid[n.y][n.x].merged) {
+          let d = distSq(grid[y][x].color, grid[n.y][n.x].color);
+          if (d < bestDist) {
+            bestDist = d;
+            bestCoord = n;
+          }
+        }
+      }
+
+      if (bestDist <= tolerance * tolerance && bestCoord) {
+        grid[y][x].merged = true;
+        grid[bestCoord.y][bestCoord.x].merged = true;
+        grid[bestCoord.y][bestCoord.x].color = grid[y][x].color;
+      } else {
+        grid[y][x].color = color(0, 0, 0);  // turn the square black
+      }
+    }
+  }
+
+  // Check if all merged
+  let allMerged = true;
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      if (!grid[i][j].merged) {
+        allMerged = false;
+        break;
+      }
+    }
+  }
+
+  if (allMerged) {
+    initializeGrid();
+  }
+
+  // Draw the grid
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
+      fill(grid[y][x].color);
+      stroke(0);
+      rect(x * side, y * side, side, side);
+    }
+  }
+}
+
+function distSq(c1, c2) {
+  let dr = red(c1) - red(c2);
+  let dg = green(c1) - green(c2);
+  let db = blue(c1) - blue(c2);
+  return dr * dr + dg * dg + db * db;
+}
+
+
+
+</script>
 </html>
 

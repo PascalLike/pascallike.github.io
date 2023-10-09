@@ -96,29 +96,63 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+    @font-face {
+        font-family: 'OpenDyslexic'; 
+        src: url("../fonts/open_dyslexic/OpenDyslexic-Regular.otf") format("opentype");
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'OpenDyslexic'; 
+        src: url("../fonts/open_dyslexic/OpenDyslexic-Bold.otf") format("opentype");
+        font-style: bold;
+    }
+
+    @font-face {
+        font-family: 'OpenDyslexic'; 
+        src: url("../fonts/open_dyslexic/OpenDyslexic-Italic.otf") format("opentype");
+        font-style: italic;
+    }
+
     html {   
         background-color: #ffffff;
-        font-family: ubuntu,trebuchet ms,lucida grande,lucida sans unicode,lucida sans,Tahoma,sans-serif;
+        font-family: OpenDyslexic,Roboto,system-ui,-apple-system,BlinkMacSystemFont;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
     }
 
+    #mare {
+        background-color: black;
+        padding: 5%;
+        height: 100%;
+        z-index: 2; 
+        position: relative;
+    }
+
     #page {
         content: "";
+        position: relative;
         display: table;
         clear: both;
+        width: 80%;
+        height: 80%;
+        padding: 2%;
+        background-color: white;
+        z-index: 3;
     }
 
     #leftcol {
         float: left;
         width: 25%;
-        padding-left: 0.5em;
+        padding-left: 0.6em;
     }
 
     #rightcol {
         padding-top: 1em;
         padding-left: 2em;
         float: left;
+        background-color: white;
         width: 60%;
     }
 
@@ -139,11 +173,27 @@ textarea {
         margin: 0;
         padding: 0;
     }
+
+    .aberration::before {
+        content: attr(data-text);
+        
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
       
+      .aberration::before {
+        color: transparent;
+        text-shadow: 2px 0 rgba(255, 0, 0, 0.5), -2px 0 rgba(0, 255, 0, 0.5);
+      }
+      
+      /* .aberration::after {
+        color: transparent;
+        text-shadow: -2px 0 rgba(0, 0, 255, 0.5), 2px 0 rgba(255, 255, 0, 0.5);
+      } */
 
     p { 
-        color: #111; 
-        font-size: 1em; 
+        font-size: 0.9em; 
         line-height: 1.6em;
     }
 
@@ -170,12 +220,20 @@ textarea {
         border-radius: 50%; 
         margin-top: 3em;
         margin-left: 1em;
+        max-width: 240px;
+        max-height: 240px;
+        width: 90%;
+        height: 90%;
     }
 
 /* ==========================================================================
    Helper classes
    ========================================================================== */
 
+
+.post-scriptum {
+    font-size: 0.7em;
+}
 /*
  * Hide visually and from screen readers
  */
